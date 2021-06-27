@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+  </head>
+  <body>
+    <select id="selectAlliance">
+      <option value="">選択してください</option>
+      <option value="oneworld">OneWorld</option>
+      <option value="staraliance">StarAliance</option>
+      <option value="skyteam">SkyTeam</option>
+    </select>
+    
+    <select id="selectAirline">
+      <option value="">選択してください</option>
+      <option value="jal">JAL</option>
+      <option value="ana">ANA</option>
+      <option value="other">その他</option>
+    </select>
+
+    <select id="selectAirport">
+      <option data-parent="" value="" >選択してください</option>
+      <option data-parent="jal oneworld ohata" value="hij">広島</option>
+      <option data-parent="jal" value="ukb">神戸</option>
+      <option data-parent="jal" value="hnd">羽田</option>
+      <option data-parent="jal" value="nrt">成田</option>
+      <option data-parent="jal" value="fuk">福岡</option>
+      <option data-parent="jal" value="kan">関空</option>
+      <option data-parent="ana" value="hij">広島</option>
+      <option data-parent="ana" value="ukb">神戸</option>
+      <option data-parent="ana" value="hnd">羽田</option>
+      <option data-parent="ana" value="nrt">成田</option>
+      <option data-parent="ana" value="fuk">福岡</option>
+      <option data-parent="ana" value="kan">関空</option>
+    </select>
+
+    <select id="selectLounge">
+      <option data-parent="" value="" >選択してください</option>
+      <option data-parent="ukb" value="ukb">さくら</option>
+      <option data-parent="jkb" value="" value="hnd">プレミアム</option>
+    </select>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="jquery.selectChain.js"></script>
+    <script>
+$(document).ready(function(){
+  $('#selectAirline, #selectAlliance, #selectPeople').selectChain('#selectAirport');
+  $('#selectAirport').selectChain('#selectLounge');
+});
+
+
+
+  </script>
+  </body>
+</html>
