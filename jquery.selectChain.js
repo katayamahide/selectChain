@@ -60,7 +60,16 @@
         let childDataArray = [];
         childDataArray = $(childOption).data('parent').split(' ');
 
-        if (isArrayMatch(parentValArray, childDataArray))
+        // 子に不一致の親の値が格納されます
+        let diff;
+        diff = parentValArray.filter(function (parentVal)
+        {
+          // 子のデータと親データが不一致の場合、trueを返します
+          return childDataArray.indexOf(parentVal) < 0;
+        });
+
+        // 不一致が無かった場合
+        if ( ! diff.length)
         {
           // 一致の場合、表示
           $(childOption).show();
@@ -91,7 +100,6 @@
    * @param array array2 
    * @returns bool 
    */
-
   function isArrayMatch(array1, array2) {
     return [...array1, ...array2].filter( function (item)
     {
